@@ -24,30 +24,21 @@
 
 # How To Read this document
 
-This document wants to be a reference for best practices in the daily use of Git, despite the complexity of this tool  
-it is worth mentioning that Git is a tool that track the changes in a repository (that is, a folder that contains files and  
-a hidden folder named .git which contains all the needed metadata to achieve the tracking).
+This document wants to be a reference for best practices in the daily use of Git, despite the complexity of this tool it is worth mentioning that Git is a tool that track the changes in a repository (that is, a folder that contains files and a hidden folder named .git which contains all the needed metadata to achieve the tracking).
 
-Some concepts are stressed by the author for one simple reason: the main goal of Git is tracking the changes and  
-Years of experience have shown that Git is very good at that. However, this is not for free, it requires some attentions  
-by Individual Contributors (the engineers who commit changes, henceforth referred to as IC).
+Some concepts are stressed by the author for one simple reason: the main goal of Git is tracking the changes and years of experience have shown that Git is very good at that. However, this is not for free, it requires some attentions by Individual Contributors (the engineers who commit changes, henceforth referred to as IC).
 
-The history of a Git repository shows all the contributions, and if ICs don’t follow some simple rules, it can easily turn into a mess, in fact losing  
-the primary goal: tracking changes effectively.
+The history of a Git repository shows all the contributions, and if ICs don’t follow some simple rules, it can easily turn into a mess, in fact losing the primary goal: tracking changes effectively.
 
-Moreover, having a good history allows for some tasks, like understanding what happened, learning how to implement something, and helping the reviewer when faced with  
-Pull requests.
+Moreover, having a good history allows for some tasks, like understanding what happened, learning how to implement something, and helping the reviewer when faced with Pull requests.
 
 Git, like other tools, was designed to allow several ICs to work together efficiently.
 
 This document is divided into items, each of which is designed to explain the pros and cons of each method.
 
-Each item is presented with the usage of the command line tool and requires a basic knowledge of Git, furthermore, the reader is strongly invited to  
-read [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2) (especially the chapters 1. Getting Started, 2. Git Basics, and Git Branching).
+Each item is presented with the usage of the command line tool and requires a basic knowledge of Git, furthermore, the reader is strongly invited to read [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2) (especially the chapters 1. Getting Started, 2. Git Basics, and Git Branching).
 
-Items are arranged into three categories: basics, intermediate, and advanced, while the first two show safe practices and the last one shows
-how to rewrite the history, which can be safe on a branch that is not shared with other ICs but is forbidden when other ICs are working  
-on the same branch.
+Items are arranged into three categories: basics, intermediate, and advanced, while the first two show safe practices and the last one shows how to rewrite the history, which can be safe on a branch that is not shared with other ICs but is forbidden when other ICs are working on the same branch.
 
 
 ## Basics items
@@ -178,7 +169,7 @@ Let's suppose you are working on a long task, let's say one or two week task, th
 ## Intermediate items
 
 ### Item 6: the simplest Git workflow: feature branch
-Let's suppose we are asked to work on the feature find button, then a branch feature-findbutton is branched-off from the mainline 
+Let's suppose we are asked to work on the feature find button, then a branch feature-findbutton is branched-off from the mainline
 ```bash
 $ git checkout develop
 $ git pull #just to be sure that our branch is updated with remote
@@ -222,7 +213,7 @@ hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
-like other use cases Git is telling us why the updates were rejected 
+like other use cases Git is telling us why the updates were rejected
 
 ![Scheme](images/conflict1.png)
 
@@ -244,7 +235,7 @@ $ git push
 ```
 ![Scheme](images/conflict3.png)
 
-It is worth noting that no merge commit was generated but the commit C4 was replaced by the commit C4'. That is, the commit C4 was turned into C4' in order to be added on top of C3 (C4 was on top of C2) 
+It is worth noting that no merge commit was generated but the commit C4 was replaced by the commit C4'. That is, the commit C4 was turned into C4' in order to be added on top of C3 (C4 was on top of C2)
 
 ### Item 8: a dry run approach to git merge
 Sometimes you want to try a merge but without actually make it. To do that one strategy is created temporary branch and try it, in this case if this branch is already pushed we can ask for help to other IC without any risk
