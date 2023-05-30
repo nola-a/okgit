@@ -204,6 +204,7 @@ And finally when the feature is ready (optional)
 ```bash
 $ git checkout develop
 $ git merge --squash --ff-only feature-findbutton
+$ git commit -m 'Merge pull request #feature-findbutton'
 $ git push origin develop
 ```
 The last bunch of commands was tagged optional because using Pull Request on bitbucket/github/gitlab needs an approval from reviewers and than the UI will show the merge button. That is, last operations can be done with one click.
