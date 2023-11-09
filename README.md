@@ -312,7 +312,7 @@ The picture below explains why we chose a fast forward merge strategy when a fea
 Let's suppose our repo
 ![Scheme](images/restore1.png)
 
-And we want to restore the repo how it looked like when it was in C2, all necessary is running the following commands:
+And we want to restore the repo to the C2 commit using the following commands:
 ```bash
 $ git rm -rf *
 $ git checkout C2 . #note the dot at the end of git checkout
@@ -320,9 +320,9 @@ $ git commit -m 'Restore to C2'
 ```
 ![Scheme](images/restore2.png)
 
-And the rationale behind 'the right way' is for two reasons:
+There are two main reasons to go for 'the right way' :
 - The history remains consistent (no rewriting)
-- All changes are contained in one commit that can easily revert with:
+- All the changes are stored in the same commit that can be easily reverted by:
 ```bash
 $ git revert CX
 ```
@@ -336,28 +336,28 @@ Unpacking objects: 100% (9/9), 962 bytes | 7.00 KiB/s, done.
 From https://foobar.com.com/scm/user/testrepo
  + 38b166c...c2b0abe master     -> origin/master  (forced update)
 ```
-The last line indicates that there was an update on branch master, the big issue is that the update was forced, this means that the history of that branch was rewritten. Generally origin repo is configured to avoid that this can happen on some important branch like master or develop anyway this one can still happen on a short lived branch (like feature branch). It remembers important that each time the history is rewritten no one else will be able to commit on that branch anymore (unless reset the own version of that branch)
+The last line indicates that there was an update on the master branch, the big issue is that the update was forced which means the history of that branch was rewritten. Generally origin repo is configured to avoid this kind of situations on important branches such as master/develop, but it is likely to happen on short-lived feature branches. It is important to remember that each time someone rewrites the history it is compromised for the others to commit on the same branch, which cannot be done anymore (unless resetting the branch version from the beginning)
 
 ## Advanced items
 
 ### Item 13: update last commit: git amend
-Let's suppose that you just committed (not yet pushed) and there is something that you want commit so it is time to use amend:
+Let's suppose you just committed (not pushed yet) and then you remember you left out something of the commit, so it's time to amend:
 ```bash
 $ git commit --amend
 ```
-Remember to use it only for those committs that are only in your local branch, otherwise you are going to break history for others ICs
+Remember to use it only for the local commits of your branch, otherwise chances are you're going to break the history for the others ICs
 
 ### Item 14: rebuild history: rebase
-We already saw this function in action on the item 6, now we can add something more on what already know. Rebasing is this principal tool for history rewriting
+We already saw this function in action on the item 6, now we can add something more to what we already know. Rebasing is the principal feature git offers for rewriting the history:
 
 ```bash
 $ git checkout existing_feature_branch
 $ git rebase develop
 ```
-In few words, we asked Git to rewind the history of that current branch till a common ancestor commit, at that point just applying all commits of the current branch. If something get wrong Git will ask us to solve the conflicts.
+In a few words, we asked Git to rewind the history of that current branch till a common ancestor commit, at that point just applying all commits of the current branch. If something wrong happens, then Git will ask us to solve the eventual conflicts.
 
 ### Item 15: rebuild history #2: interactive rebase
-It works like rebase except, that is interactive, this means that the rebasing could be planned and decides if a commit must be melted into the previous one, edited or even deleted, etc. etc.
+It works just like git rebase, with the exception that it is interactive, which means that rebasing could be planned and decides if a commit must be melted into the previous one, edited or even deleted, etc. etc.
 ```bash
 $ git rebase -i 
 ```
