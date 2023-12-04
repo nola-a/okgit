@@ -1,7 +1,7 @@
 # Table of contents
 
 - [How To Read this document](#how-to-read-this-document)
-  - [Basics items](#basics-items)
+  - [Basic items](#basic-items)
     - [Item 1: what's happening: git status](#item-1-whats-happening-git-status)
     - [Item 2: how to commit: git commit](#item-2-how-to-commit-git-commit)
     - [Item 3: references update: git fetch](#item-3-references-update-git-fetch)
