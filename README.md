@@ -1,8 +1,12 @@
 # Table of contents
 
+- [Table of contents](#table-of-contents)
 - [How To Read this document](#how-to-read-this-document)
   - [Basic items](#basic-items)
     - [Item 1: what's happening: git status](#item-1-whats-happening-git-status)
+      - [Nothing to do](#nothing-to-do)
+      - [There is some changes in the local branch](#there-is-some-changes-in-the-local-branch)
+      - [There are some updates in the remote branch.](#there-are-some-updates-in-the-remote-branch)
     - [Item 2: how to commit: git commit](#item-2-how-to-commit-git-commit)
     - [Item 3: references update: git fetch](#item-3-references-update-git-fetch)
     - [Item 4: differences between references](#item-4-differences-between-references)
@@ -10,6 +14,8 @@
   - [Intermediate items](#intermediate-items)
     - [Item 6: the simplest Git workflow: feature branch](#item-6-the-simplest-git-workflow-feature-branch)
     - [Item 7: my push was rejected, what can I do?](#item-7-my-push-was-rejected-what-can-i-do)
+      - [Pull approach](#pull-approach)
+      - [Rebasing approach](#rebasing-approach)
     - [Item 8: a dry run approach to git merge](#item-8-a-dry-run-approach-to-git-merge)
     - [Item 9: how to approach conflicts](#item-9-how-to-approach-conflicts)
     - [Item 10: why sometimes fast-forward is better](#item-10-why-sometimes-fast-forward-is-better)
@@ -20,6 +26,7 @@
     - [Item 14: rebuild history: rebase](#item-14-rebuild-history-rebase)
     - [Item 15: rebuild history #2: interactive rebase](#item-15-rebuild-history-2-interactive-rebase)
     - [Item 16: Git insights: git reflog](#item-16-git-insights-git-reflog)
+    - [Item 17: Git workflow: git worktrees](#item-17-git-workflow-git-worktrees)
     - [Bonus Item: happy git!](#bonus-item-happy-git)
 
 # How To Read this document
