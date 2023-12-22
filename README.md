@@ -390,5 +390,28 @@ It is also possible restoring the local repo to a specific point for example:
 ```bash
 $ git reset --hard e80b719
 ```
+### Item 17: Git workflow: git worktrees
+
+The Git worktree allows you to work simultaneously in many branches of the same repository. Imagine being in the middle of a new feature you want to add to your project, but suddendly a bug comes out, which needs to be fixed asap. Most of the people would stash or commit their changes to check out later to the affected branch.
+This is where the git worktree comes in, instead of stashing your changes (which you could forget about...) you can simply add a worktree and work from there, without doing anything else.
+The command to add a new worktree tracking the supposed feature branch feature/M1 is:
+
+```bash
+$ git worktree add featureM1 --track -b feature/M1
+```
+
+where featureM1 will be the name of the folder containing the repository freshly checked out at the feature/M1 branch.
+To remove a tree simply type:
+
+```bash
+$ git worktree remove featureM1
+```
+
+to list every tree present in the current directory:
+
+```bash
+$ git worktree list
+```
+
 ### Bonus Item: happy git!
 Applying all of the previously described rules and testing/compiling correctly your local work might prevent introducing bugs/issues into the main branch. Whenever the code won't compile or the tests will break, it means that there is something wrong on your local branch. Always double check before asking for help or claiming bugs in develop.
